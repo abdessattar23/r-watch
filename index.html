@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Random Movie Recommendation</title>
+</head>
+<body>
+  <h1>Random Movie Recommendation</h1>
+  <button onclick="generateRecommendation()">Generate Recommendation</button>
+  <div id="recommendation"></div>
+
+  <script>
+    async function generateRecommendation() {
+      try {
+        // Fetch the most popular movies from the IMDb API
+        const response = await fetch('https://imdb-api.com/en/API/MostPopularMovies/k_v2otgvzj');
+        const data = await response.json();
+
+        // Extract title, image, year, rankUpDown, imDbRating, and crew from each movie
+        const movies = data.items.map(movie => {
+          const { title, image, year, rankUpDown, imDbRating, crew } = movie;
+          return { title, image, year, rankUpDown, imDbRating, crew };
+        });
+
+        // Generate a random recommendation based on the extracted data
+        const randomIndex = Math.floor(Math.random() * movies.length);
+        const recommendation = movies[randomIndex];
+
+        // Display the recommendation on the page
+        const recommendationElement = document.getElementById('recommendation');
+        recommendationElement.innerHTML = `
+          <h2>${recommendation.title}</h2>
+          <img src="${recommendation.image}" alt="${recommendation.title}">
+          <p>Year: ${recommendation.year}</p>
+          <p>Rank: ${recommendation.rankUpDown}</p>
+          <p>IMDb Rating: ${recommendation.imDbRating}</p>
+          <p>Crew: ${recommendation.crew}</p>
+        `;
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  </script>
+</body>
+</html>
