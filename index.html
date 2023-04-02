@@ -8,14 +8,9 @@
 <link rel="icon" href="icon.png"><meta name="author" content="Abdessattar Elyagoubi" /> <meta charset=utf-8>
     <meta http-equiv=x-ua-compatible content="IE=11">
     <meta name="google-site-verification" content="uR6NLYVFoiktxJOfO2f1NovgOyWkQlwvJidwUXzGitY" />
-    <link rel=icon type=image/png sizes=32x32 href=fav_32x32.png>
-    <link rel=icon type=image/png sizes=16x16 href=fav_16x16.png>     <!-- Bootstrap CSS -->
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-      crossorigin="anonymous"
-    />
+    <link rel=icon sizes=32x32 href=icon_32x32.png>
+    <link rel=icon sizes=16x16 href=icon_16x16.png>     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
 
     <!-- Custom CSS -->
     <style>
@@ -64,14 +59,22 @@ body {
 
   @media (max-width: 576px) { 
     #recommendation img {
-      max-width: 100%;
-    }
+  max-width: 50%;
+  height: auto;
+}
   }
+      .card-body {
+  text-align: center;
+}
+
+.card-body img {
+  display: inline-block;
+}
     </style>
   </head>
   <body>
     <div class="container">
-      <h1>Random Movie Recommendation</h1>
+      <h1>R-Watch</h1>
       <div class="row">
         <div class="col-md-6 offset-md-3">
           <button class="btn btn-block mb-3" onclick="generateRecommendation()">
