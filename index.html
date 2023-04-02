@@ -135,7 +135,7 @@ body {
     ></script>
 
     <script>
-      let xhr = new XMLHttpRequest();
+     let xhr = new XMLHttpRequest();
 xhr.open("GET", "https://imdb-api.com/en/API/MostPopularMovies/pk_rnai5u3jthd3jx097", true);
 xhr.onload = function() {
   if (this.status === 200) {
@@ -153,19 +153,10 @@ xhr.onload = function() {
       }
     }
 
-    const carouselInner = document.querySelector(".carousel-inner");
+    const carouselImages = document.querySelectorAll(".carousel-item img");
     randomIndexes.forEach((index, i) => {
       const { image } = movies[index];
-      const carouselItem = document.createElement("div");
-      carouselItem.classList.add("carousel-item");
-      if (i === 0) {
-        carouselItem.classList.add("active");
-      }
-      const img = document.createElement("img");
-      img.classList.add("d-block", "w-100");
-      img.src = image;
-      carouselItem.appendChild(img);
-      carouselInner.appendChild(carouselItem);
+      carouselImages[i].src = image;
     });
   } else {
     console.error("An error occurred.");
